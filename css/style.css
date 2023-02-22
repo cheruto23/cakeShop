@@ -89,7 +89,7 @@ h3{
 }
 /*cake search section*/
 .cake-search{
-   /* background-image: url(../images/bg.jpeg);*/
+   background-image: url(../images/bg.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

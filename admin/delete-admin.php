@@ -29,6 +29,5 @@
     header('location:'.SITEURL.'admin/manage-admin');
   }
 
-  //3.Redirect to manage admin page with (message success/error)
 
 ?>

@@ -145,35 +145,7 @@
             //dont upload image and set image name value as blank
             $image_name="";
         }
-
-
-
-
-                   /* /// Get reference to uploaded image
-                    $image_file = $_FILES["image"];
-
-                    // Exit if no file uploaded
-                    if (!isset($image_file)) {
-                        die('No file uploaded.');
-                    }
-
-                    // Exit if is not a valid image file
-                    $image_type = exif_imagetype($image_file["tmp_name"]);
-                    if (!$image_type) {
-                        die('Uploaded file is not an image.');
-                    }
-
-                    // Move the temp image file to the images/ directory
-                    move_uploaded_file(
-                        // Temp image location
-                        $image_file["tmp_name"],
-
-                        // New image location
-                        __DIR__ . "/images/category" . $image_file["name"]
-                    );*/
-
                 
-
 
         //Create sql query to insert category into database
         $sql="INSERT INTO tbl_category SET 
