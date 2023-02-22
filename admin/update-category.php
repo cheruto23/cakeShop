@@ -139,14 +139,14 @@
 
                         //Renaming image
                         //Get extension of image(jpg,png)
-                        $ext = end(explode('.' , $image_name));
+                        $ext = end(explode('.',$image_name));
                         
                         //rename image
-                        $image_name = "Category-Name".rand(000,999).'.'.$ext;
+                        $image_name = "Category-Name-".rand(0000,9999).'.'.$ext; //Gets extension of the image
 
                         $source_path =$_FILES['image']['tmp_name'];
 
-                        $destination_path= "../images/category/"."$image_name";
+                        $destination_path= "../images/category/".$image_name;
 
                         //Finally upload the image
                         $upload = move_uploaded_file($source_path, $destination_path);

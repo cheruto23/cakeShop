@@ -20,6 +20,28 @@
                     echo $_SESSION['add'];
                     unset($_SESSION['add']);
                 }
+                //Check whether delete session is created or not
+                if(isset($_SESSION['delete']))
+                {
+                    echo $_SESSION['delete'];
+                    unset($_SESSION['delete']);
+                }
+
+                if(isset($_SESSION['upload']))
+                {
+                    echo $_SESSION['upload'];
+                    unset($_SESSION['upload']);
+                }
+                if(isset($_SESSION['unauthorized']))
+                {
+                    echo $_SESSION['unauthorized'];
+                    unset($_SESSION['unauthorized']);
+                }
+                if(isset($_SESSION['update']))
+                {
+                    echo $_SESSION['update'];
+                    unset($_SESSION['update']);
+                }
             
             ?>
 
@@ -92,7 +114,7 @@
                                     <td><?php echo $active; ?></td>
 
                                     <td>
-                                    <a href="#" class="btn-secondary">Update Cake</a>
+                                    <a href="<?php echo SITEURL;?>admin/update-cake.php?id=<?php echo $id; ?>" class="btn-secondary">Update Cake</a>
                                     <a href="<?php echo SITEURL; ?>admin/delete-cake.php?id= <?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Cake</a>
                                     </td>
                             </tr>
