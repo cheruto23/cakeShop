@@ -185,6 +185,10 @@
                             header('location:'.SITEURL.'admin/manage-category.php');
                             die();
                         }
+                        else
+                        {
+                            $image_name = $current_image;
+                        }
                         
                     }
                     else
@@ -198,9 +202,9 @@
                 //update the database
                 $sql2 = "UPDATE tbl_category SET
                     title = '$title',
-                    image_name = $image_name,
+                    image_name = '$image_name',
                     featured = '$featured',
-                    active = '$active'
+                    active = '$active',
                     WHERE id=$id
                 
                 

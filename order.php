@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cake Shop</title>
-    <!--Link css file-->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!--Navbar section starts here-->
-    <section class="navbar">
-        <div class="container">
-          <!--<div class="logo">
-            <img src="images/logo.jpeg" alt="Bakery Logo" class="img-responsive">
-          </div>-->
-          <div class="menu text-right">
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="categories.html">Categories</a>
-                </li>
-                <li>
-                    <a href="cakes.html">cakes</a>
-                </li>
-                <li>
-                     <a href="contactus.html">Contact</a>
-                </li>
-            </ul>
-                
-          </div>
-          <div class="clearfix"></div>
-        </div>
-    </section>
-    <!--Navbar section ends here-->
+<?php include('partials-frontend/menu.php'); ?>
 
     <!--search section starts here-->
     <section class="cake-search text-center">
@@ -85,34 +48,4 @@
     </section>
     <!--Search section ends here-->
 
-    <!--Social media section starts here-->
-    <section class="social">
-        <div class="container text-center ">
-           <ul>
-            <li>
-              <img src="https://img.icons8.com/fluency/48/null/facebook-new.png"/>
-            </li>
-            <li>
-              <img src="https://img.icons8.com/3d-fluency/94/null/instagram-new.png"/>
-            </li>
-            <li>
-              <img src="https://img.icons8.com/fluency/48/null/twitter.png"/>
-            </li>
-           </ul>
-          </div>
-    </section>
-    <!--Social media section ends here-->
-
-    <!--Footer section starts here-->
-    <section class="footer">
-        <div class="container tt-center">
-           <p>All rights reserved. Designed by <a href="#">Joy</a></p>
-          </div>
-    </section>
-    <!--Footer section ends here-->
-    
- 
-
-    
-</body>
-</html>
+    <?php include('partials-frontend/footer.php') ?>
