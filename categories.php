@@ -41,7 +41,7 @@
                     $title=$row['title'];
                     $image_name=$row['image_name'];
                     ?>
-                       <a href="category-cakes.php">
+                       <a href="<?php echo SITEURL; ?>category-cakes.php?category_id=<?php echo $id; ?>">
                           <div class="box-3 float-container">
                             
                             <?php

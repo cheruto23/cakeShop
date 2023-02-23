@@ -3,7 +3,8 @@
     <!--search section starts here-->
     <section class="cake-search text-center">
         <div class="container">
-            <form action="">
+
+            <form action="<?php echo SITEURL; ?>cake-search.php" method="POST">
               <input type="search" name="search" placeholder="search for cake">
               <input type="submit" name="submit" value="search" class="btn btn-primary">
             </form>

@@ -1,87 +1,108 @@
 <?php include('partials-frontend/menu.php'); ?>
 
+<?php
+    //Check whether id is passed or not
+    if(isset($_GET['category_id']))
+    {
+      //Category id is set and get the id
+      $category_id = $_GET['category_id'];
+      //Get category title based on category id
+      $sql = "SELECT title FROM tbl_category WHERE id=$category_id";
+
+      //Execute the query
+      $res = mysqli_query($conn, $sql);
+
+      //Get the value from database
+      $row = mysqli_fetch_assoc($res);
+      //Get the title
+      $category_title = $row['title'];
+    }
+    else
+    {
+      //Category not passed 
+      //Redirect to homepage
+      header('location:'.SITEURL);
+    }
+?>
+
     <!--search section starts here-->
     <section class="cake-search text-center">
         <div class="container">
-            <form action="">
-              <input type="search" name="search" placeholder="search for cake">
-              <input type="submit" name="submit" value="search" class="btn btn-primary">
-            </form>
+
+            <h2>Cakes on <a href="" class="text-white">"<?php echo $category_title; ?></a></h2>
+
           </div>
     </section>
     <!--Search section ends here-->
+
     <!--Cake menu section starts here-->
     <section class="cake-menu">
         <div class="container">
             <h2 class="text-center">Cake Menu</h2>
 
             <?php
+                //Sql query to get cake based on selected category
+                $sql2 = "SELECT *FROM tbl_cake WHERE category_id=$category_id";
 
-            //Getting cakes from database that are active and fetured
-            $sql2 = "SELECT *FROM tbl_cake WHERE featured='Yes' AND active='Yes' LIMIT 6";
-            //Execute the query
-            $res2 = mysqli_query($conn, $sql2);
+                //Execute the query 
+                $res2 = mysqli_query($conn, $sql2);
 
-            //Count rows
-            $count2 = mysqli_num_rows($res2);
+                //Count the rows
+                $count2 = mysqli_num_rows($res2);
 
-            //Check if cake is available or not
-            if($count2>2){
-              //Cake available
-              while($row=mysqli_fetch_assoc($res2))
-              {
-                //get all the values
-                $id=$row['id'];
-                $title=$row['title'];
-                $price=$row[price];
-                $description=$row['description'];
-                $image_name=$row['image_name'];
-                ?>
-
-                <div class="cake-menu-box">
-                  <div class="cake-menu-img">
-                    <?php
-                      //Check whether image is available or not
-                      if($image_name=="") 
-                      {
-                        //Image not available
-                        echo "<div class='error'>Image not available</div>";
-                      }
-                      else
-                      {
-                        //Image available
-                        ?>
-                         <img src="<?php echo SITEURL; ?>images/cake/<?php echo $image_name; ?>"  class="img-responsive img-curve">
-                        <?php
-                      }
-                    
+                //Check whether cake is available or not
+                if($count2>0)
+                {
+                  //cake is available
+                  while($row2=mysqli_fetch_assoc($res2))
+                  {
+                    $title = $row2['title'];
+                    $price= $row2['price'];
+                    $description= $row2['description'];
+                    $image_name = $row2['image_name'];
                     ?>
-                   
-                    </div>
 
-                    <div class="cake-menu-description">
-                      <h4><?php echo $title; ?></h4>
-                      <p class="cake-price"><?php echo $price; ?></p>
-                      <p class="cake-details">
-                          <?php echo $description; ?>
-                      </p>
-                      <br>
-                    <a href="order.php" class="btn btn-primary">order now</a>
-                  </div>
-                </div>
+                      <div class="cake-menu-box">
+                          <div class="cake-menu-img">
+                            <?php
+                              if($image_name=="")
+                              {
+                                //Image not available
+                                echo "<div class='error'>Image not available</div>";
+                              }
+                              else
+                              {
+                                //Image available
+                                ?>
+                                     <img src="<?php echo SITEURL; ?>images/cake/<?php echo $image_name; ?>"  class="img-responsive img-curve">
+                                <?php
+                              }
+                             ?>
+                             
+                          </div>
 
-                <?php
-              }
-            }
-            else
-            {
-              //Cake not available
-              echo "<div class='error'>Cake not available</div>";
-            }
+                          <div class="cake-menu-description">
+                              <h4><?php echo $title; ?></h4>
+                              <p class="cake-price">ksh.<?php echo $price; ?></p>
+                              <p class="cake-details">
+                                  <?php echo $description; ?>
+                              </p>
+                              <br>
 
+                              <a href="#" class="btn btn-primary">Order Now</a>
+                          </div>
+                      </div>
+
+                    <?php
+                  }
+                }
+                else
+                {
+                  //cake not available
+                  echo "<div class='error'>Cake not available</div>";
+                }
             ?>
 
-          
             
             <div class="clearfix"></div>
           </div>
