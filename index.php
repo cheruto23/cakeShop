@@ -12,6 +12,16 @@
     </section>
     <!--Search section ends here-->
 
+    <?php
+
+        if(isset($_SESSION['order']))
+        {
+          echo $_SESSION['order'];
+          unset($_SESSION['order']);
+      }
+
+    ?>
+
     <!--Category section starts here-->
     <section class="categories">
         <div class="container">
@@ -89,7 +99,7 @@
             <?php
 
             //Getting cakes from database that are active and fetured
-            $sql2 = "SELECT *FROM tbl_cake WHERE active='Yes' AND featured='Yes' ";
+            $sql2 = "SELECT *FROM tbl_cake WHERE active='Yes' AND featured='Yes' LIMIT 3 ";
             //Execute the query
             $res2 = mysqli_query($conn, $sql2);
 
@@ -137,7 +147,7 @@
                           <?php echo $description; ?>
                       </p>
                       <br>
-                    <a href="order.php" class="btn btn-primary">order now</a>
+                    <a href="<?php echo SITEURL; ?>order.php?cake_id=<?php echo $id; ?>" class="btn btn-primary">order now</a>
                   </div>
                 </div>
 
