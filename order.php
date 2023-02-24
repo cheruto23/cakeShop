@@ -1,5 +1,5 @@
-<?php include('partials-frontend/menu.php'); ?>
 <?php
+include('partials-frontend/menu.php') ;
     //Check whether cake id isset or not
     if(isset($_GET['cake_id']))
     {
@@ -27,7 +27,7 @@
         {
             //Cake not available
             //Redirect to homepage
-            header('location:'.SITEURL);
+            header('location;'.SITEURL);
         }
     }
     else
@@ -124,7 +124,7 @@
 
                     $order_date = date("Y-m-d h:i:sa");//Order data
                     
-                    $status = "ordered"; //ordered,on delivery,delivered,cancelled
+                    $status = ["ordered"]; //ordered,on delivery,delivered,cancelled
 
                     $customer_name =$_POST['full-name'];
                     $customer_contact = $_POST['contact'];
@@ -139,10 +139,10 @@
                     price=$price,
                     qty = $qty,
                     total=$total,
-                    order-date='$order_date',
+                    order_date='$order_date',
                     status='$status',
                     customer_name='$customer_name',
-                    customer_contact='$customer_contact;,
+                    customer_contact='$customer_contact',
                     customer_email='$customer_email',
                     customer_address='$customer_address'
         
@@ -153,17 +153,17 @@
                     //Execute the query
                     $res2 = mysqli_query($conn, $sql2);
                     //Check whether query executed successfully or not
-                    if($res2==true)
+                    if($res2)
                     {
                         //query executed and order saved
                         $_SESSION['order'] = "<div class='success'>Cake ordered successfully</div>";
-                        header('location;'.SITEURL);
+                        header('location:'.SITEURL);
                     }
                     else
                     {
                         //Failed to save order
                         $_SESSION['order'] = "<div class='error'>Failed to order cake</div>";
-                        header('location;'.SITEURL);
+                        header('location:'.SITEURL);
                     }
                 }
             ?>

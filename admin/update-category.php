@@ -139,21 +139,22 @@
 
                         //Renaming image
                         //Get extension of image(jpg,png)
-                        $ext = end(explode('.',$image_name));
+                       // $ext = end(explode('.',$image_name));
+                        $ext=pathinfo($image_name, PATHINFO_EXTENSION);
                         
                         //rename image
                         $image_name = "Category-Name-".rand(0000,9999).'.'.$ext; //Gets extension of the image
 
                         $source_path =$_FILES['image']['tmp_name'];
 
-                        $destination_path= "../images/category/".$image_name;
+                        $destination_path= "../images/category/"."$image_name";
 
                         //Finally upload the image
                         $upload = move_uploaded_file($source_path, $destination_path);
 
                         //check whether image is uploaded or not
                         //And if image is not uploaded, then we will stop the process and redirect with error message
-                        if($upload==false)
+                        if(!$upload)
 
                         {
                             //set message
@@ -165,12 +166,25 @@
                         }
                     }
 
+                    $get_current_image="SELECT image_name FROM tbl_category WHERE id=$id LIMIT 1";
+                       //Execute the query
+                     
+
+                       $result =  mysqli_query($conn, $get_current_image);
+
+                       if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_array($result);
+                        $imagename= $row["image_name"];
+                        echo "Image Name: " .  $imagename;
+                    } else {
+                        echo "No results found";
+                    }
 
                         //Remove current image, if available
                         if($current_image != "")
                         {
 
-                            $remove_path = "../images/category/".$current_image;
+                            $remove_path = "../images/category/".$imagename;
                             $remove = unlink($remove_path);
 
                         }
@@ -178,55 +192,42 @@
 
                        //Check whether image is removed or not. 
                         //If failed to remove display message and stop the process
-                        if($remove==false)
+                        if(!$remove)
                         {
                             //failed to remove the image
-                            $_SESSION['failed-remove'] = "<div class= 'error'>Failed to remove current image</div>";
+                            $_SESSION['failed-remove'] = "<div class= 'error'>Failed to remove current image</div>  $imagename";
                             header('location:'.SITEURL.'admin/manage-category.php');
                             die();
                         }
                         else
                         {
-                            $image_name = $current_image;
-                        }
-                        
-                    }
-                    else
-                    {
-                        $image_name = $current_image;
-                    }
-                
-               
+                            //$image_name = $current_image;
 
+                            //update the database
+                                    $sql2 = "UPDATE tbl_category SET
+                                    title = '$title',
+                                    image_name = '$image_name',
+                                    featured = '$featured',
+                                    active = '$active'
+                                    WHERE id=$id
+                                
+                                
+                                ";
+                                //Execute the query
+                                $res2 = mysqli_query($conn, $sql2);
 
-                //update the database
-                $sql2 = "UPDATE tbl_category SET
-                    title = '$title',
-                    image_name = '$image_name',
-                    featured = '$featured',
-                    active = '$active',
-                    WHERE id=$id
-                
-                
-                ";
-                //Execute the query
-                $res2 = mysqli_query($conn, $sql2);
-
-
-                //Redirect to manage category with message
-                //Check whether query executed or not
-                if($res2==true)
-                {
-                    //category updated
+                                   //category updated
                     $_SESSION['update'] = "<div class='success'>Category updated successfully</div>";
                     header('location:'.SITEURL.'admin/manage-category.php');
-                }
-                else
-                {
-                    //Failed to update category
-                    $_SESSION['update'] = "<div class='error'>Failed to update category</div>";
-                    header('location:'.SITEURL.'admin/manage-category.php');
-                }
+
+
+
+                            
+                        }
+                        
+                    }            
+                         
+              
             }
 
             

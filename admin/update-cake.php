@@ -197,7 +197,7 @@
                         {
                             //Image is available
                             //A.Uploading new image
-                            $ext = end(explode('.',$image_name)); //Get extension of the image
+                            $ext=pathinfo($image_name, PATHINFO_EXTENSION); //Get extension of the image
 
                             //rename the image
                             $image_name= "Cake-Name-".rand(0000,9999).'.'.$ext; 

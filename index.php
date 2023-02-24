@@ -98,7 +98,7 @@
 
             <?php
 
-            //Getting cakes from database that are active and fetured
+            //Getting cakes from database that are active and featured
             $sql2 = "SELECT *FROM tbl_cake WHERE active='Yes' AND featured='Yes' LIMIT 3 ";
             //Execute the query
             $res2 = mysqli_query($conn, $sql2);
