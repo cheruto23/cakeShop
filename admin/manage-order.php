@@ -23,7 +23,7 @@
                 <th>S.N</th>
                 <th>Cake</th>
                 <th>Price</th>
-                <th>Qty .</th>
+                <th>Qty</th>
                 <th>Total</th>
                 <th>Order Date</th>
                 <th>Status</th>
@@ -66,17 +66,17 @@
                 ?>
 
                     
-                    <tr>
-                        <td><?php echo $sn++; ?>.</td>
-                        <td><?php echo $cake ?>;</td>
-                        <td><?php echo $price ?>;</td>
-                        <td><?php echo $qty ?>;</td>
-                        <td><?php echo $total ?>;</td>
-                        <td><?php echo $order_date ?>;</td>
+                            <tr>
+                                <td><?php echo $sn++; ?>.</td>
+                                <td><?php echo $cake ?>;</td>
+                                <td><?php echo $price ?>;</td>
+                                <td><?php echo $qty ?>;</td>
+                                <td><?php echo $total ?>;</td>
+                                <td><?php echo $order_date ?>;</td>
+                                <td>
+                                    <?php 
 
-                        <td>
-                            <?php
-                            //Ordered, on delivery, Delivered, Cancelled
+                                    //Ordered, on delivery, Delivered, Cancelled
                                 if($status=="Ordered")
                                 {
                                     echo "<label>$status</label>";
@@ -93,13 +93,14 @@
                                 {
                                     echo "<label style='color: red;' >$status</label>";
                                 }
-                             ?>
-                        </td>
+                                    
+                                    ?>
+                                    </td>
+                                <td><?php echo $customer_name ?>;</td>
+                                <td><?php echo $customer_contact ?>;</td>
+                                <td><?php echo $customer_email ?>;</td>
+                                <td><?php echo $customer_address ?>;</td>
 
-                        <td><?php echo $customer_name ?>;</td>
-                        <td><?php echo $customer_contact ?>;</td>
-                        <td><?php echo $customer_email ?>;</td>
-                        <td><?php echo $customer_address ?>;</td>
                         <td>
                         <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-primary">Update Order</a>
                         </td>

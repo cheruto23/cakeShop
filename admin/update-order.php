@@ -49,13 +49,13 @@
             else
             {
                 //redirect to manage order page
-                //header('location:'.SITEURL.'admin/manage-order.php');
+                header('location:'.SITEURL.'admin/manage-order.php');
             }
         
         ?>
 
         <form action="" method="POST">
-            <table class="tbl=30">
+            <table class="tbl-30">
                 <tr>
                     <td>Cake Name</td>
                     <td><b><?php echo $cake; ?></b></td>
@@ -72,7 +72,7 @@
                 <tr>
                     <td>Qty</td>
                     <td>
-                        <input type="number" name="qty" value=" <?php echo $qty; ?>">
+                        <input type="number" name="qty" value="<?php echo $qty; ?>">
                     </td>
                 </tr>
 
@@ -113,14 +113,14 @@
                 <tr>
                     <td>Customer Address:</td>
                     <td>
-                        <textarea name="customer_address"cols="30" rows="5" <?php echo $customer_address; ?>></textarea>
+                        <textarea name="customer_address"cols="30" rows="5" value="<?php echo $customer_address; ?>"></textarea>
                     </td>
                 </tr>
 
                 <tr>
                     <td colspan="2">
-                        <input type="hidden" name="id" value="<?php $id; ?>">
-                        <input type="hidden" name="price" value="<?php $price; ?>">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <input type="hidden" name="price" value="<?php echo $price; ?>">
                         <input type="submit" name="submit" value="Update Order" class="btn-secondary">
                     </td>
                 </tr>
@@ -136,8 +136,11 @@
                 $id=$_POST['id'];
                 $price=$_POST['price'];
                 $qty=$_POST['qty'];
+
                 $total = floatval($price) * intval($qty);
+
                 $status=$_POST['status'];
+                
                 $customer_name=$_POST['customer_name'];
                 $customer_contact=$_POST['customer_contact'];
                 $customer_email=$_POST['customer_email'];
@@ -152,7 +155,7 @@
                     customer_name='$customer_name',
                     customer_contact='$customer_contact',
                     customer_email='$customer_email',
-                    customer_address='$customer_address',
+                    customer_address='$customer_address'
                     WHERE id=$id
                 
                 ";
@@ -160,7 +163,7 @@
                 //Execute the query
                 $res2=mysqli_query($conn, $sql2);
                 //Count rows
-                $count2=mysqli_num_rows($res2);
+                //$count2=mysqli_num_rows($res2);
                 //check whether updated or not
                 if($res2==true)
                 {
