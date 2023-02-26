@@ -113,7 +113,7 @@
                 <tr>
                     <td>Customer Address:</td>
                     <td>
-                        <textarea name="customer_address"cols="30" rows="5" value="<?php echo $customer_address; ?>"></textarea>
+                    <input type="text" name="customer_address" value="<?php echo $customer_address; ?>">
                     </td>
                 </tr>
 
