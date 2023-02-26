@@ -214,7 +214,7 @@
                                 
                                 ";
                                 //Execute the query
-                                $res2 = mysqli_query($conn, $sql2);
+                                $res2 = mysqli_query($conn, $sql2);                                           
 
                                    //category updated
                     $_SESSION['update'] = "<div class='success'>Category updated successfully</div>";

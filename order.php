@@ -27,7 +27,7 @@ include('partials-frontend/menu.php') ;
         {
             //Cake not available
             //Redirect to homepage
-            header('location;'.SITEURL);
+            header('location:'.SITEURL);
         }
     }
     else
@@ -124,7 +124,7 @@ include('partials-frontend/menu.php') ;
 
                     $order_date = date("Y-m-d h:i:sa");//Order data
                     
-                    $status = ["ordered"]; //ordered,on delivery,delivered,cancelled
+                    $status = ("ordered"); //ordered,on delivery,delivered,cancelled
 
                     $customer_name =$_POST['full-name'];
                     $customer_contact = $_POST['contact'];
@@ -156,13 +156,13 @@ include('partials-frontend/menu.php') ;
                     if($res2)
                     {
                         //query executed and order saved
-                        $_SESSION['order'] = "<div class='success'>Cake ordered successfully</div>";
+                        $_SESSION['order'] = "<div class='success text-center'>Cake ordered successfully</div>";
                         header('location:'.SITEURL);
                     }
                     else
                     {
                         //Failed to save order
-                        $_SESSION['order'] = "<div class='error'>Failed to order cake</div>";
+                        $_SESSION['order'] = "<div class='error text-center'>Failed to order cake</div>";
                         header('location:'.SITEURL);
                     }
                 }

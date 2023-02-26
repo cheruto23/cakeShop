@@ -5,7 +5,8 @@
         <div class="container">
             <?php 
                  //Get the search keyword
-                 $search = $_POST['search'];
+                 //mysqli_real_escape_string protects data from sql injections
+                 $search = mysqli_real_escape_string($conn, $_POST['search']);
             ?>
             <h2>cakes on your search <a href="#" class="text-white"><?php echo $search; ?></a></h2>
           </div>
@@ -20,7 +21,8 @@
             <?php
 
 
-                //sql query to get cake based on search
+                //sql query to get cake based on search keyword
+                // "SELECT * FROM tbl_cake WHERE title LIKE '%%' OR description LIKE '%%'"
                 $sql = "SELECT *FROM tbl_cake WHERE title LIKE '%$search%' OR description LIKE '%$search%'";
 
                 //Execute the query

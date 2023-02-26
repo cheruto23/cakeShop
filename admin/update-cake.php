@@ -1,5 +1,10 @@
 <?php include('partials/menu.php');?>
 
+<div class="main-content">
+        <div class="wrapper">
+            <h1>Update Cake</h1>
+            <br>
+
 <?php
     //Check whether id is set or not
     if(isset($_GET['id']))
@@ -11,6 +16,12 @@
         $sql2="SELECT * FROM tbl_cake WHERE id=$id";
         //Execute the query
         $res2=mysqli_query($conn, $sql2);
+
+        //Count number of rows
+        $count=mysqli_num_rows($res2);
+        
+        if($count==1)
+        {
 
         //Get the value based on query executed
         $row2=mysqli_fetch_assoc($res2);
@@ -28,14 +39,12 @@
     else
     {
         //Redirect to manage cake
+        $_SESSION['no-category-found'] = "<div class='error'>Cake not found. </div>";
         header('location'.SITEURL.'admin/manage-cake.php');
     }
 ?>
 
-    <div class="main-content">
-        <div class="wrapper">
-            <h1>Update Cake</h1>
-            <br>
+    
 
             <form action="" method="POST" enctype="multipart/form-data">
                 <table tbl-30>
@@ -65,18 +74,20 @@
                     <td>Current Image:</td>
                     <td>
                        <?php
-                            if($current_image=="")
+                            if($current_image !=="")
                             {
-                                //image not available
-                                echo "<div class='error'>Image not available</div>";
+                                //Image available
+                                 ?>
+                                <img src="<?php echo SITEURL; ?>images/cake/<?php echo $current_image; ?>" width="100px" >
+             
+                                <?php
+                                
                             }
                             else
                             {
-                                //Image available
-                                ?>
-                                <img src="<?php echo SITEURL; ?>images/cake/<?php echo $current_image; ?>" width="100px" >
-
-                                <?php
+                                //image not available
+                                echo "<div class='error'>Image not available</div>";
+                   
                             }
                        
                        ?>
@@ -203,14 +214,14 @@
                             $image_name= "Cake-Name-".rand(0000,9999).'.'.$ext; 
 
                             //Get the source path and destination path
-                            $source_path = $_FILES['image']['name']; //source path
-                            $dst_path = "..images/cake/".$image_name; //destination path
+                            $source_path = $_FILES['image']['tmp_name']; //source path
+                            $dst_path = "../images/cake/"."$image_name"; //destination path
 
                             //Upload the image
                             $upload = move_uploaded_file($source_path, $dst_path);
 
                             //Check whether image is uploaded or not
-                            if($upload==false)
+                            if(!$upload)
                             {
                                 //Failed to upload
                                 $_SESSION['upload'] = "<div class='error'>Failed to upload new image</div>";
@@ -220,18 +231,32 @@
                                 die();
                             }
 
+                            $get_current_image="SELECT image_name FROM tbl_cake WHERE id=$id LIMIT 1";
+                            //Execute the query
+                          
+     
+                            $result =  mysqli_query($conn, $get_current_image);
+     
+                            if (mysqli_num_rows($result) > 0) {
+                             $row = mysqli_fetch_array($result);
+                             $imagename= $row["image_name"];
+                             echo "Image Name: " .  $imagename;
+                         } else {
+                             echo "No results found";
+                         }
+
                             //3.Remove the image if new image is uploaded and current image exists
                             //B.remove current image if available
                             if($current_image!="")
                             {
                                 //Current image is available
                                 //Remove the image
-                                $remove_path = "..images/cake".$current_image;
+                                $remove_path = "..images/cake".$imagename;
 
                                 $remove = unlink($remove_path);
 
                                 //Check whether the image is removed or not
-                                if($remove==false){
+                                if(!$remove){
                                     //failed to remove current image
                                     $_SESSION['remove-failed'] = "<div class='error'>Failed to remove current image</div>";
                                     //redirect to ,anage cakes
@@ -244,12 +269,12 @@
                         }
                         else
                         {
-                            $image_name = $current_image; //Default image when image is not selected
+                            //$image_name = $current_image; //Default image when image is not selected
                         }
                     }
                     else
                     {
-                        $image_name = $current_image; //Default image when button is not clicked
+                        //$image_name = $current_image; //Default image when button is not clicked
                     }
 
                    
@@ -262,30 +287,22 @@
                         category_id = 'category',
                         featured = '$featured',
                         active = '$active'
+                        WHERE id=$id
 
                     ";
 
                     //Execute the sql query
                     $res3 = mysqli_query($conn, $sql3);
 
-                    //Check whether query is executed or not 
-                    if($res3==true)
-                    {
-                        //executed and cake updated
-                        $_SESSION['update'] = "<div class='success'>Cake updated successfully.</div>";
-                        //Redirect
-                        header('location:'.SITEURL.'admin/manage-cake.php');
-                    }
-                    else
-                    {
-                        //failed to update cake
-                        $_SESSION['update'] = "<div class='error'>Failed to update cake.</div>";
-                        //Redirect
-                        header('location:'.SITEURL.'admin/manage-cake.php');
-                    }
+                    //category updated
+                    $_SESSION['update'] = "<div class='success'>Cake updated successfully</div>";
+                    header('location:'.SITEURL.'admin/manage-cake.php');
 
-                    //Redirect to manage cake with session message
+                   
+
+
                 }
+            }
 
             ?>
 

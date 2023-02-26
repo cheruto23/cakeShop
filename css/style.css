@@ -71,6 +71,21 @@ h3{
     bottom: 50px;
     left: 25%;
 }
+fieldset{
+    border: 1px solid white;
+    margin: 5%;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.error{
+    padding: 2%;
+    color: red;
+}
+.success{
+    padding: 2%;
+    color: green;
+}
 /*for navbar section*/
 .logo{
     width: 10%;
