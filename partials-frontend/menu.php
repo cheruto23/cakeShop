@@ -28,8 +28,9 @@
                 <a href="<?php echo SITEURL; ?>cakes.php">Cakes</a>
               </li>
               <li>
-                <a href="contactus.php">Contact</a>
+                <a href="<?php echo SITEURL; ?>logout.php">Logout</a>
               </li>
+              
                 
             </ul>
           </div>

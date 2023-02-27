@@ -84,6 +84,7 @@
               }
 
             ?>
+            <a href="<?php echo SITEURL; ?>categories.php" >See More</a>
             
           
             <div class="clearfix"></div>
@@ -161,6 +162,9 @@
             }
 
             ?>
+            <div>
+            <a href="<?php echo SITEURL; ?>cakes.php" >See More</a>
+            </div>
 
           
             
@@ -169,6 +173,18 @@
         
     </section>
     <!--cake menu section ends here-->
+
+    <!--Chatbot Section Starts here-->
+    <section class="chatbot">
+    <div class="container">
+      <div class="wrapper">
+        <h2>Chat Bot</h2>
+      </div>
+    </div>
+
+    </section>
+
+    <!--Chatbot Section Ends here-->
 
     <?php include('partials-frontend/footer.php') ?>
 

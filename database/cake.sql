@@ -110,3 +110,12 @@ INSERT INTO userlog(id,userEmail,userip,logintime,logout,status) VALUES
 (17,'wendygy@gmail.com','172.16.0.0','11:54','12:09','inactive'),
 (3,'judyjade23@gmail.com','192.158.1.38','06:05','06:13','active');
 
+CREATE TABLE IF NOT EXISTS `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(50) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `password` varchar(50) NOT NULL,
+ `create_datetime` datetime NOT NULL,
+ PRIMARY KEY (`id`)
+);
+

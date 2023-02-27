@@ -1,6 +1,6 @@
  <!--Social media section starts here-->
  <section class="social">
-        <div class="container text-center ">
+        <div class="container text-center  ">
            <ul>
             <li>
               <img src="https://img.icons8.com/fluency/48/null/facebook-new.png"/>

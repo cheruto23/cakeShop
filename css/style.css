@@ -173,6 +173,16 @@ fieldset{
 .social ul li{
     display: inline;
     padding: 1%;
+    
+}
+
+/*css for login*/
+.login{
+    width: 20%;
+    border: 1px solid grey;
+    margin: 10% auto;
+    padding: 2%;
+    background-color: grey;
 }
 
 /*css for mobile size*/
