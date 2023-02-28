@@ -6,7 +6,7 @@
 //if the session is not set it redirects the user to the login form/page
 
   if(! isset($_SESSION["logged_in"])){
-      header("location:login.php");
+    header('location:'.SITEURL.'login.php');
   }
 
 ?>

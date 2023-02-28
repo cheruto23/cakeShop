@@ -123,4 +123,55 @@ table tr td{
     background-color: grey;
 }
 
+/*css for chatbot*/
 
+.user-message {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.bot-message {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-container label, .form-container input[type=text] {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.form-container input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-container input[type=submit]:hover {
+    background-color: #3e8e41;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*css for chatbot*/
+.view{
+    background-color: oldlace;
+}

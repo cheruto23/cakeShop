@@ -17,6 +17,7 @@
                     <li><a href="manage-category.php">Category</a></li>
                     <li><a href="manage-cake.php">Cake</a></li>
                     <li><a href="manage-order.php">order</a></li>
+                    <li><a href="view.php">Chatbot</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>

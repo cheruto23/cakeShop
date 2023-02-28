@@ -251,7 +251,7 @@
                             {
                                 //Current image is available
                                 //Remove the image
-                                $remove_path = "..images/cake".$imagename;
+                                $remove_path = "../images/cake/"."$image_name";
 
                                 $remove = unlink($remove_path);
 

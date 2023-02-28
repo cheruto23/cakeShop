@@ -28,8 +28,16 @@
                 <a href="<?php echo SITEURL; ?>cakes.php">Cakes</a>
               </li>
               <li>
+                <a href="<?php echo SITEURL; ?>chatbot.php">Chatbot</a>
+              </li>
+              <li>
+                <a href="<?php echo SITEURL; ?>order-tracking.php">Order Tracking</a>
+              </li>
+              <li>
                 <a href="<?php echo SITEURL; ?>logout.php">Logout</a>
               </li>
+              
+              
               
                 
             </ul>

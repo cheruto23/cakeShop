@@ -1,6 +1,6 @@
 <?php
 include('partials-frontend/menu.php') ;
-include 'protect.php';
+//include 'protect.php';
     //Check whether cake id isset or not
     if(isset($_GET['cake_id']))
     {

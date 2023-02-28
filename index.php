@@ -1,4 +1,5 @@
 <?php include('partials-frontend/menu.php'); ?>
+<!--include ('protect.php'); -->
 
     <!--search section starts here-->
     <section class="cake-search text-center">
@@ -84,7 +85,7 @@
               }
 
             ?>
-            <a href="<?php echo SITEURL; ?>categories.php" >See More</a>
+           <!-- <a href="<?php echo SITEURL; ?>categories.php" >See More</a>-->
             
           
             <div class="clearfix"></div>
@@ -148,7 +149,7 @@
                           <?php echo $description; ?>
                       </p>
                       <br>
-                    <a href="<?php echo SITEURL; ?>order.php?cake_id=<?php echo $id; ?>" class="btn btn-primary">order now</a>
+                      <a href="<?php echo SITEURL; ?>order.php?cake_id=<?php echo $id; ?>" class="btn btn-primary">order now</a>
                   </div>
                 </div>
 
@@ -179,8 +180,15 @@
     <div class="container">
       <div class="wrapper">
         <h2>Chat Bot</h2>
+        <br>
+        <p>Cake you need not available?</p>
+        <br>
+        <p>Click here to describe the type of cake you want <br><br><a href="chatbot.php" class="btn-primary">Chatbot</a>.</p>
+        
+        
       </div>
     </div>
+    <div class="clearfix"></div>
 
     </section>
 
