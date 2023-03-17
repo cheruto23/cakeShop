@@ -15,6 +15,7 @@
                 unset ($_SESSION['update']);
             }
 
+
         ?>
         <br><br>
 
@@ -62,6 +63,7 @@
                 $customer_contact=$row['customer_contact'];
                 $customer_email=$row['customer_email'];
                 $customer_address=$row['customer_address'];
+               
 
                 ?>
 
@@ -100,7 +102,8 @@
                                 <td><?php echo $customer_contact ?>;</td>
                                 <td><?php echo $customer_email ?>;</td>
                                 <td><?php echo $customer_address ?>;</td>
-
+                               
+                                
                         <td>
                         <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-primary">Update Order</a>
                         </td>

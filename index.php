@@ -85,7 +85,7 @@
               }
 
             ?>
-           <!-- <a href="<?php echo SITEURL; ?>categories.php" >See More</a>-->
+           <a href="<?php echo SITEURL; ?>categories.php" >See More</a>
             
           
             <div class="clearfix"></div>

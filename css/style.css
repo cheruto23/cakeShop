@@ -123,10 +123,18 @@ fieldset{
 .categories{
     padding: 4% 0;
 }
+
 .box-3{
-    width: 25%;
+    width: 30%;
     float: left;
-    margin: 2%;
+    margin: 1%;
+    height: 200px; /* set a fixed height for all images */
+}
+
+.box-3 img {
+    height: 100%; /* make the images fill their containers */
+    width: 90%; /* maintain aspect ratio */
+    display: block; /* remove extra space below images */
 }
 /*css for cake menu*/
 .cake-menu{
@@ -288,4 +296,16 @@ fieldset{
         margin-bottom: 5%;
     }
 }
-
+/* Style the Cancel link */
+ul li a {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* Style the Cancel confirmation message */
+  #cancel-message {
+    color: red;
+    font-weight: bold;
+  }
+  

@@ -131,6 +131,7 @@ include('partials-frontend/menu.php') ;
                     $customer_contact = $_POST['contact'];
                     $customer_email = $_POST['email'];
                     $customer_address = $_POST['address'];
+                    
 
                     //Save the order in database
                     //sql to save the data
@@ -174,3 +175,8 @@ include('partials-frontend/menu.php') ;
     <!--Search section ends here-->
 
     <?php include('partials-frontend/footer.php') ?>
+
+
+
+
+   

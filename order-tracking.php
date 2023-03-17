@@ -1,40 +1,63 @@
 <?php include('partials-frontend/menu.php'); ?>
 <div class="tracking text-center">
 <?php
-// Retrieve the order details and status from the database
+// Retrieve all order details from the database
 $conn = mysqli_connect("localhost", "root", "", "cake-order");
- //Get all orders from database
- $sql = "SELECT * FROM tbl_order ORDER BY id DESC"; //Display from latest order at first
- //Execute query
- $res = mysqli_query($conn, $sql);
- //Count the rows
- $count=mysqli_num_rows($res);
+$sql = "SELECT * FROM tbl_order ORDER BY id DESC";
+$res = mysqli_query($conn, $sql);
 
- $sn=1; //Serial Number and set its initial values as one
-
-$order = mysqli_fetch_assoc($res);
-$orderDetails = $order['id'];
-$cake = $order['cake'];
-$qty=$order['qty'];
-$total = $order['total'];
-$order_date = $order['order_date'];
-$orderStatus = $order['status'];
-$customer_name=$order['customer_name'];
-$customer_contact=$order['customer_contact'];
-$customer_email=$order['customer_email'];
-$customer_address=$order['customer_address'];
-
-// Display a message to the user with the order details and status
-echo "<p>Thank you for your order! Your order details are as follows:</p>";
-echo "<p> Your id is:" .$orderDetails . "</p>";
-echo "<p> Cake type:" . $cake . "</p>";
-echo "<p> Quantity:" . $qty . "</p>";
-echo "<p> Total:" . $total . "</p>";
-echo "<p> Order date:" . $order_date . "</p>";
-echo "<p> Name:" . $customer_name . "</p>";
-echo "<p> Contact:" . $customer_contact . "</p>";
-echo "<p> Email:" . $customer_email . "</p>";
-echo "<p> address:" . $customer_address . "</p>";
-echo "<p>Your order status is: " . $orderStatus . "</p>";
+// Check if there are any orders
+if (mysqli_num_rows($res) > 0) {
+    echo "<p>Here are your previous orders:</p>";
+    echo "<table>";
+    echo "<tr>
+    <th>Order ID</th>
+    <th>Cake type</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    <th>Order date</th>
+    <th>Status</th>
+    <th>Cancel</th>
+    </tr>";
+    
+    while ($order = mysqli_fetch_assoc($res)) {
+        $orderDetails = $order['id'];
+        $cake = $order['cake'];
+        $qty=$order['qty'];
+        $total = $order['total'];
+        $order_date = $order['order_date'];
+        $orderStatus = $order['status'];
+        
+        // Display the order details in a table row
+        echo "<tr>";
+        echo "<td>".$orderDetails."</td>";
+        echo "<td>".$cake."</td>";
+        echo "<td>".$qty."</td>";
+        echo "<td>".$total."</td>";
+        echo "<td>".$order_date."</td>";
+        echo "<td>".$orderStatus."</td>";
+        
+        // Add a "Cancel Order" button if the order status is "ordered"
+        if ($orderStatus == 'ordered') {
+            echo '<td>';
+            echo '<form method="post" action="cancel_order.php">';
+            echo '<input type="hidden" name="order_id" value="'.$orderDetails.'">';
+            echo '<button type="submit" name="cancel_order">Cancel Order</button>';
+            echo '</form>';
+            echo '</td>';
+        } else {
+            echo '<td></td>';
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "<p>You haven't placed any orders yet.</p>";
+}
 ?>
 </div>
+
+
+
+
+
